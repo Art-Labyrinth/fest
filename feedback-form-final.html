@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Labyrinth Опрос - вопросы 4-5</title>
+    <style>
+        :root {
+            --primary: #7C5CE6;
+            --good: #4ADE80;
+            --good-light: rgba(74, 222, 128, 0.15);
+            --bad: #FF6B6B;
+            --bad-light: rgba(255, 107, 107, 0.15);
+            --bg: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --border: #E2E8F0;
+
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F172A;
+                --bg-card: #1E293B;
+                --text: #F1F5F9;
+                --text-secondary: #CBD5E1;
+                --border: #334155;
+                --good-light: rgba(74, 222, 128, 0.1);
+                --bad-light: rgba(255, 107, 107, 0.1);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            padding: 1rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px;
+            }
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        /* === Стек вариант === */
+        .stack-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        .stack-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg);
+        }
+
+        /* Левая половина - для "работало хорошо" */
+        .stack-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            position: relative;
+        }
+
+        .stack-left:hover {
+            background: var(--good-light);
+        }
+
+        .stack-left.active {
+            background: var(--good-light);
+        }
+
+        /* Правая половина - для "нужно улучшить" */
+        .stack-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            position: relative;
+            border-left: 1px solid var(--border);
+        }
+
+        .stack-right:hover {
+            background: var(--bad-light);
+        }
+
+        .stack-right.active {
+            background: var(--bad-light);
+        }
+
+        /* Название элемента в центре */
+        .stack-name {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text);
+            white-space: nowrap;
+            text-align: center;
+            width: auto;
+            z-index: 1;
+        }
+
+        /* На маленьких экранах - скролл в центре */
+        @media (max-width: 320px) {
+            .stack-name {
+                white-space: normal;
+                max-width: 60px;
+                font-size: 0.85rem;
+            }
+
+            .stack-left, .stack-right {
+                padding: 0.75rem;
+            }
+        }
+
+        /* Чекбокс стили */
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.15s ease;
+        }
+
+        /* Левый чекбокс - зеленый крестик */
+        .stack-left .checkbox-icon {
+            color: var(--good);
+        }
+
+        .stack-left .checkbox-icon.hidden {
+            opacity: 0.3;
+        }
+
+        .stack-left .checkbox-icon.checked {
+            opacity: 1;
+        }
+
+        /* Правый чекбокс - красный минус */
+        .stack-right .checkbox-icon {
+            color: var(--bad);
+        }
+
+        .stack-right .checkbox-icon.hidden {
+            opacity: 0.3;
+        }
+
+        .stack-right .checkbox-icon.checked {
+            opacity: 1;
+        }
+
+        /* Скрытые инпуты */
+        input[type="radio"] {
+            display: none;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: 1rem;
+            background: rgba(124, 92, 230, 0.1);
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+            margin-top: 1.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Art Labyrinth 2026</h1>
+        <p class="subtitle">Вопросы 4-5: Оцени зоны фестиваля</p>
+
+        <div class="section-card">
+            <div class="section-title">Какие зоны работали хорошо / нужно улучшить?</div>
+
+            <div class="stack-container">
+                <!-- Парковка -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'parking_good', 'parking_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="parking_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="parking" id="parking_good" value="good">
+                    </label>
+                    <div class="stack-name">Парковка</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'parking_bad', 'parking_good')">
+                        <input type="radio" name="parking" id="parking_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="parking_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Welcome Centre -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'welcome_good', 'welcome_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="welcome_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="welcome" id="welcome_good" value="good">
+                    </label>
+                    <div class="stack-name">Welcome Centre</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'welcome_bad', 'welcome_good')">
+                        <input type="radio" name="welcome" id="welcome_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="welcome_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Инфоцентр -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'info_good', 'info_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="info_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="info" id="info_good" value="good">
+                    </label>
+                    <div class="stack-name">Инфоцентр</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'info_bad', 'info_good')">
+                        <input type="radio" name="info" id="info_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="info_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Кухня -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'kitchen_good', 'kitchen_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="kitchen_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="kitchen" id="kitchen_good" value="good">
+                    </label>
+                    <div class="stack-name">Кухня</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'kitchen_bad', 'kitchen_good')">
+                        <input type="radio" name="kitchen" id="kitchen_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="kitchen_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Волонтёры -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'volunteers_good', 'volunteers_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="volunteers_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="volunteers" id="volunteers_good" value="good">
+                    </label>
+                    <div class="stack-name">Волонтёры</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'volunteers_bad', 'volunteers_good')">
+                        <input type="radio" name="volunteers" id="volunteers_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="volunteers_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Культурная программа -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'culture_good', 'culture_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="culture_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="culture" id="culture_good" value="good">
+                    </label>
+                    <div class="stack-name">Культурная программа</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'culture_bad', 'culture_good')">
+                        <input type="radio" name="culture" id="culture_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="culture_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Главная сцена -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'stage_main_good', 'stage_main_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="stage_main_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="stage_main" id="stage_main_good" value="good">
+                    </label>
+                    <div class="stack-name">Главная сцена</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'stage_main_bad', 'stage_main_good')">
+                        <input type="radio" name="stage_main" id="stage_main_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="stage_main_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Малая сцена -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'stage_small_good', 'stage_small_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="stage_small_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="stage_small" id="stage_small_good" value="good">
+                    </label>
+                    <div class="stack-name">Малая сцена</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'stage_small_bad', 'stage_small_good')">
+                        <input type="radio" name="stage_small" id="stage_small_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="stage_small_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Йога зона -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'yoga_good', 'yoga_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="yoga_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="yoga" id="yoga_good" value="good">
+                    </label>
+                    <div class="stack-name">Йога зона</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'yoga_bad', 'yoga_good')">
+                        <input type="radio" name="yoga" id="yoga_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="yoga_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Мастер град -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'master_good', 'master_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="master_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="master" id="master_good" value="good">
+                    </label>
+                    <div class="stack-name">Мастер град</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'master_bad', 'master_good')">
+                        <input type="radio" name="master" id="master_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="master_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Спорт зона -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'sport_good', 'sport_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="sport_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="sport" id="sport_good" value="good">
+                    </label>
+                    <div class="stack-name">Спорт зона</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'sport_bad', 'sport_good')">
+                        <input type="radio" name="sport" id="sport_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="sport_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Детская зона -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'kids_good', 'kids_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="kids_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="kids" id="kids_good" value="good">
+                    </label>
+                    <div class="stack-name">Детская зона</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'kids_bad', 'kids_good')">
+                        <input type="radio" name="kids" id="kids_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="kids_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Арт-галерея -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'gallery_good', 'gallery_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="gallery_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="gallery" id="gallery_good" value="good">
+                    </label>
+                    <div class="stack-name">Арт-галерея</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'gallery_bad', 'gallery_good')">
+                        <input type="radio" name="gallery" id="gallery_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="gallery_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Чайная -->
+                <div class="stack-item">
+                    <label class="stack-left" onclick="toggleOption(this, 'tea_good', 'tea_bad')">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="tea_good_icon">✓</div>
+                        </div>
+                        <input type="radio" name="tea" id="tea_good" value="good">
+                    </label>
+                    <div class="stack-name">Чайная</div>
+                    <label class="stack-right" onclick="toggleOption(this, 'tea_bad', 'tea_good')">
+                        <input type="radio" name="tea" id="tea_bad" value="bad">
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-icon hidden" id="tea_bad_icon">−</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="note">
+                💡 Выбери либо "работало хорошо" (зеленый крестик ✓), либо "нужно улучшить" (красный минус −). При выборе одного второе автоматически снимается.
+            </div>
+        </div>
+
+        <div class="footer">
+            Спасибо за обратную связь! Это помогает делать Art Labyrinth лучше.
+        </div>
+    </div>
+
+    <script>
+        function toggleOption(clickedLabel, activeId, inactiveId) {
+            const activeInput = document.getElementById(activeId);
+            const inactiveInput = document.getElementById(inactiveId);
+            const activeIcon = document.getElementById(activeId + '_icon');
+            const inactiveIcon = document.getElementById(inactiveId + '_icon');
+
+            const isCurrentlyActive = activeInput.checked;
+
+            // Если уже активен - деактивируем
+            if (isCurrentlyActive) {
+                activeInput.checked = false;
+                inactiveInput.checked = false;
+                updateUI(activeId, false);
+                updateUI(inactiveId, false);
+            } else {
+                // Активируем текущий и деактивируем противоположный
+                activeInput.checked = true;
+                inactiveInput.checked = false;
+                updateUI(activeId, true);
+                updateUI(inactiveId, false);
+            }
+        }
+
+        function updateUI(inputId, isChecked) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(inputId + '_icon');
+            const label = input.closest('label');
+
+            if (isChecked) {
+                icon.classList.remove('hidden');
+                icon.classList.add('checked');
+                label.classList.add('active');
+            } else {
+                icon.classList.add('hidden');
+                icon.classList.remove('checked');
+                label.classList.remove('active');
+            }
+        }
+
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Все иконки изначально скрыты (hidden класс уже есть в HTML)
+        });
+    </script>
+</body>
+</html>

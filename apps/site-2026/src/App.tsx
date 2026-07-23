@@ -15,6 +15,7 @@ import Program from "./components/Program";
 import GettingThere from "./components/GettingThere";
 import AnalyticsLoader from "./components/GTMLoader";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import Feedback from "./components/Feedback";
 
 import "./index.css";
 import "./i18n";
@@ -45,6 +46,7 @@ const router = createBrowserRouter(
         { index: true, element: <Home /> },
         { path: "about", element: <About /> },
         { path: "contacts", element: <Contacts /> },
+        { path: "feedback", element: <Feedback /> },
         { path: "join", element: <JoinLanding /> },
         { path: "join/volunteer", element: <JoinVolunteerForm /> },
         { path: "join/master", element: <JoinMasterForm /> },
