@@ -307,9 +307,9 @@
         "BC Victoriabank SA",
         "SWIFT-ul Bancii: VICBMD2X",
         "Adresa: 31 August str.141, MD 2004 Chisinau, Republic of Moldova",
-        "Date beneficiar: ART-LABYRINTH UNIUNEA DE CREATIE AO",
+        "Date beneficiar: ART-LABYRINTH ASOCIATIA OBSTEASCA",
         "Cod fiscal: 1014620001302",
-        "Nr.contului/IBAN: MD10VI000002224211643MDL"
+        "Nr.contului/IBAN: MD85VI022241100000463MDL"
       ]
     },
     "our_needs": {
@@ -572,10 +572,12 @@
     "q10_title": "Art Labyrinth для вас — это…",
     "q10_desc": "Продолжите фразу",
     "textarea_placeholder": "Напишите ваш ответ...",
-    "submit": "Отправить опрос",
+    "submit": "Оставить отзыв",
     "thanks": "Спасибо за обратную связь! Это помогает делать Art Labyrinth лучше.",
     "back": "Назад",
     "next": "Далее",
+    "prev": "Назад",
+    "name_title": "Как вас зовут?",
     "roles": {
       "guest": "Гость",
       "volunteer": "Волонтёр",
@@ -615,7 +617,8 @@
       "sport": "Спорт зона",
       "kids": "Детская зона",
       "gallery": "Арт-галерея",
-      "tea": "Чайная"
+      "tea": "Чайная",
+      "wc": "Туалеты"
     }
   }
 }

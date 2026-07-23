@@ -536,29 +536,20 @@
   "feedback": {
     "title": "Art Labyrinth 2026",
     "subtitle": "Your opinion helps make the festival better",
-    "progress": "Survey progress",
-    "userdata": "Your information",
-    "name_placeholder": "Name and surname (optional)",
     "anonymous": "Leave survey anonymously",
-    "q1_title": "Question 1: Your role at the festival",
-    "q3_title": "Question 3: What did you like the most?",
-    "q4_q5_title": "Questions 4-5: Rate the festival zones",
     "q4_q5_desc": "Choose either \"worked well\" ✓ or \"needs improvement\" −",
     "q4_q5_hint": "💡 Choose either \"worked well\" (green checkmark ✓) or \"needs improvement\" (red minus −). Selecting one automatically deselects the other.",
-    "q6_title": "Question 6: What can be improved at the festival?",
-    "q7_title": "Question 7: What was the weakest point of the festival?",
-    "q8_title": "Question 8: Your ideas",
-    "q8_desc": "If you had the opportunity to change or add something to the festival, what would it be?",
-    "q9_title": "Question 9: Would you like to help the festival in the future?",
     "q9_contact_prompt": "Thank you for wanting to help! How can we contact you?",
     "q9_contact_placeholder": "Email, phone or social media",
     "q10_title": "Art Labyrinth for you is…",
     "q10_desc": "Complete the sentence",
     "textarea_placeholder": "Write your answer...",
-    "submit": "Submit survey",
+    "submit": "Leave feedback",
     "thanks": "Thank you for your feedback! It helps make Art Labyrinth better.",
     "back": "Back",
     "next": "Next",
+    "prev": "Back",
+    "name_title": "What's your name?",
     "other_role_placeholder": "Specify your role",
     "name_placeholder": "Name and surname (optional)",
     "progress": "Survey progress",
@@ -611,7 +602,8 @@
       "sport": "Sport Zone",
       "kids": "Kids Zone",
       "gallery": "Art Gallery",
-      "tea": "Tea House"
+      "tea": "Tea House",
+      "wc": "Toilets"
     }
   }
 }
