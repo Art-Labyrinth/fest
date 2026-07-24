@@ -7,7 +7,8 @@
     "about": "About",
     "contacts": "Contacts",
     "program": "Programme",
-    "gettingthere": "Getting There"
+    "gettingthere": "Getting There",
+    "feedback": "Feedback"
   },
   "home": {
     "title": "Art-Labyrinth",
@@ -38,16 +39,16 @@
     "open_2025": "Open 2025"
   },
   "about": {
-    "title": "Art Labyrinth Summer Festival 2026",
-    "text_1": "Every year, Art Labyrinth Summer Festival brings together people ready to unite in the search for inspiration, creativity and mindfulness. In 2026 the festival takes place from June 18 to 21 on the picturesque banks of the Dniester River in the village of Sokola, Moldova — our most beloved and sunniest place. We return here to once again create a space where art, music and nature merge into a single flow.",
+    "title": "Art-Labyrinth Summer Festival 2026",
+    "text_1": "Every year, Art-Labyrinth Summer Festival brings together people ready to unite in the search for inspiration, creativity and mindfulness. In 2026 the festival takes place from June 18 to 21 on the picturesque banks of the Dniester River in the village of Sokola, Moldova — our most beloved and sunniest place. We return here to once again create a space where art, music and nature merge into a single flow.",
     "text_2": "Pulse of the Earth is about the feeling that the earth has its own rhythm, constantly present all around us. In everyday life we barely notice it because of the noise, the rush and endless tasks. This rhythm can be felt in simple things — in the movement of the wind, in the sounds of the forest, in the warmth of the earth beneath your feet, in the silence.",
     "text_3": "When you give yourself time to stop, you gradually begin to catch this state — as if syncing with something larger and alive. At the festival this feeling grows stronger: through music, through movement, through the people around you, through moments lived here and now.",
     "text_4": "Pulse of the Earth is about returning to this feeling — about connection with nature, with the space around you and with yourself, about the chance to slow down a little and feel your own rhythm.",
     "theme_label": "This year’s theme:",
     "theme_name": "Pulse of the Earth",
     "heading": "About the festival",
-    "theme_text_1": "Art Labyrinth Summer Festival is an annual event founded in 2008 that has since become a significant landmark in Moldova's cultural life. Each year we choose a new location to create a unique atmosphere and connect people through art and music. But our place — Poiana, on the bank of the Dniester — has become our special corner, a place of power where nature and creativity meet.",
-    "theme_text_2": "We believe a festival is more than just a gathering of people. It is a space for transformation, exchange of ideas and inspiration. At Art Labyrinth, everyone can unlock their potential, become part of a community, contribute to a shared purpose and become a creator.",
+    "theme_text_1": "Art-Labyrinth Summer Festival is an annual event founded in 2008 that has since become a significant landmark in Moldova's cultural life. Each year we choose a new location to create a unique atmosphere and connect people through art and music. But our place — Poiana, on the bank of the Dniester — has become our special corner, a place of power where nature and creativity meet.",
+    "theme_text_2": "We believe a festival is more than just a gathering of people. It is a space for transformation, exchange of ideas and inspiration. At Art-Labyrinth, everyone can unlock their potential, become part of a community, contribute to a shared purpose and become a creator.",
     "theme_text_3": "Our festival brings together different people — artists, musicians, craftspeople, volunteers, dreamers — everyone ready to work in one rhythm and create something great. We invite you on a journey where every step is filled with mindfulness, every moment with harmony, and every person matters.",
     "features_title": "What awaits you?",
     "features": [
@@ -58,7 +59,7 @@
       "Ecological initiatives and life in harmony with nature",
       "Mindful practices and meditations"
     ],
-    "closing": "Art Labyrinth is a space for creation, inspiration and self-expression.",
+    "closing": "Art-Labyrinth is a space for creation, inspiration and self-expression.",
     "closing_2": "Join us, become part of the festival, and discover the rhythm of unity and creativity that will resonate in each of us."
   },
   "contacts": {
@@ -70,7 +71,7 @@
   "participants": {
     "hero": {
       "header": "FOR PARTICIPANTS",
-      "text": "Art Labyrinth is not just a festival, but a space of living co-creation. There are no spectators or organizers here—everyone who comes to the festival automatically becomes a participant. Festival participation is open to all and can take various forms: participating in the cultural program, providing assistance through physical and intellectual abilities, or financial support through contributions."
+      "text": "Art-Labyrinth is not just a festival, but a space of living co-creation. There are no spectators or organizers here—everyone who comes to the festival automatically becomes a participant. Festival participation is open to all and can take various forms: participating in the cultural program, providing assistance through physical and intellectual abilities, or financial support through contributions."
     },
     "popups": {
       "rules": {
@@ -109,7 +110,7 @@
         "title_5": "Creativity and participation",
         "title_6": "Art and inner work",
         "title_7": "The power of community",
-        "text_1": "Art Labyrinth is more than just a festival. It is a living space where nature, art, inner journeys, and community come together.",
+        "text_1": "Art-Labyrinth is more than just a festival. It is a living space where nature, art, inner journeys, and community come together.",
         "text_2": "The festival takes place on special astronomical days—full moon or solstice. These moments enhance the energetic and symbolic depth of the experience.",
         "text_3": "We choose untouched, wild landscapes. There is no conventional infrastructure, and that is part of the experience—living in a tent, under the stars, by a campfire. We step away from urban rhythms, noise, and visual clutter to return to simplicity.",
         "text_4": "The festival is built on principles of sustainable and mindful presence:\n— sorting waste and leaving no trace,\n— using natural materials,\n— avoiding plastic,\n— eating vegetarian food,\n— treating all living things with care.",
@@ -151,12 +152,12 @@
         "text_7": "No, the festival contribution includes participation in all workshops, concerts, and performances.",
         "text_8": "Yes, the festival will have shower cabins and eco-toilets.",
         "text_9": "Yes, clean spring water will be available at the festival.",
-        "text_10": "During the festival, police will be on duty, and the Art Labyrinth team will ensure order and adherence to traditions.",
+        "text_10": "During the festival, police will be on duty, and the Art-Labyrinth team will ensure order and adherence to traditions.",
         "text_11": "A duty medic and first aid kit will be available near the information center.",
         "text_12": "No, bringing or consuming alcohol is not in line with the festival's traditions.",
         "text_13": "Smoking is prohibited in public areas and at main festival sites.",
         "text_14": "Yes, you can bring pets, but they must remain under your control.",
-        "text_15": "Of course! Art Labyrinth places great emphasis on families and children. A large children's area with a varied program will be provided for kids.",
+        "text_15": "Of course! Art-Labyrinth places great emphasis on families and children. A large children's area with a varied program will be provided for kids.",
         "text_16": "The contribution can be refunded under the following conditions: 80% refund if requested 3 weeks before the festival, 50% refund if requested 2 weeks before, no refund for requests made less than 2 weeks before. Refunds will be processed after the festival once all documentation is completed."
       }
     },
@@ -197,7 +198,7 @@
     },
     "master": {
       "header": "FOR MASTERS AND ARTISTS",
-      "text": "Want to be part of the festival's magic? Fill out the form and showcase your creativity at Art Labyrinth!",
+      "text": "Want to be part of the festival's magic? Fill out the form and showcase your creativity at Art-Labyrinth!",
       "button": "FILL THE FORM",
       "titles": {
         "slider_1": "Who can apply to participate?",
@@ -530,6 +531,85 @@
       "parking_label": "Parking:",
       "parking_link": "https://maps.app.goo.gl/UHU4Y3xLASGE1T6RA",
       "warning": "Driving and parking cars within the festival grounds is prohibited. All cars must be left in the parking lot."
+    }
+  },
+  "feedback": {
+    "title": "Art-Labyrinth 2026",
+    "subtitle": "Your opinion helps make the festival better",
+    "anonymous": "Leave survey anonymously",
+    "q4_q5_desc": "Choose either \"worked well\" ✓ or \"needs improvement\" −",
+    "q4_q5_hint": "💡 Choose either \"worked well\" (green checkmark ✓) or \"needs improvement\" (red minus −). Selecting one automatically deselects the other.",
+    "q9_contact_prompt": "Thank you for wanting to help! How can we contact you?",
+    "q9_contact_placeholder": "Email, phone or social media",
+    "q10_title": "Art-Labyrinth for you is…",
+    "q10_desc": "Complete the sentence",
+    "textarea_placeholder": "Write your answer...",
+    "submit": "Leave feedback",
+    "submitting": "Sending...",
+    "thanks": "Thank you for your feedback! It helps make Art-Labyrinth better.",
+    "thank_you_title": "Thank you!",
+    "thank_you_line1": "Art Labyrinth is created by people.",
+    "thank_you_line2": "Your feedback is another contribution to the development of the festival and its future.",
+    "thank_you_line3": "We appreciate your participation and trust.",
+    "back_to_home": "Back to home",
+    "back": "Back",
+    "next": "Next",
+    "prev": "Back",
+    "name_title": "What's your name?",
+    "other_role_placeholder": "Specify your role",
+    "name_placeholder": "Name and surname (optional)",
+    "progress": "Survey progress",
+    "userdata": "Your information",
+    "q1_title": "Your role at the festival",
+    "q3_title": "What did you like the most?",
+    "q4_q5_title": "Which zones or processes",
+    "q4_q5_good": "worked well ✓",
+    "q4_q5_bad": "need improvement −",
+    "q6_title": "What can be improved at the festival?",
+    "q7_title": "What was the weakest point of the festival?",
+    "q8_title": "Your ideas",
+    "q8_desc": "If you had the opportunity to change or add something to the festival, what would it be?",
+    "q9_title": "Would you like to help the festival in the future?",
+    "roles": {
+      "guest": "Guest",
+      "volunteer": "Volunteer",
+      "organizer": "Organizer",
+      "coordinator": "Coordinator",
+      "musician": "Musician",
+      "master": "Master",
+      "artist": "Artist",
+      "performer": "Artist / Performer",
+      "partner": "Partner / Sponsor",
+      "other": "Other"
+    },
+    "help_options": {
+      "organizer": "Organizer",
+      "coordinator": "Coordinator",
+      "volunteer": "Volunteer",
+      "master_class": "Teach a master class",
+      "musician": "Perform as a musician",
+      "build": "Build the festival",
+      "art_object": "Create an art object",
+      "financial": "Help financially",
+      "partner": "Become a partner",
+      "other": "Other"
+    },
+    "zones": {
+      "parking": "Parking",
+      "welcome_centre": "Welcome Centre",
+      "info_center": "Info Center",
+      "kitchen": "Kitchen",
+      "volunteers": "Volunteers",
+      "culture": "Cultural Program",
+      "stage_main": "Main Stage",
+      "stage_small": "Small Stage",
+      "yoga": "Yoga Zone",
+      "master_grad": "Master Grad",
+      "sport": "Sport Zone",
+      "kids": "Kids Zone",
+      "gallery": "Art Gallery",
+      "tea": "Tea House",
+      "wc": "Toilets"
     }
   }
 }

@@ -14,6 +14,7 @@ export default function Header() {
     { to: "/gallery", label: t("nav.gallery") },
     { to: "/program", label: t("nav.program") },
     { to: "/getting-there", label: t("nav.gettingthere") },
+    { to: "/feedback", label: t("nav.feedback") },
     { to: "/contribute", label: t("nav.contribute") },
     { to: "/contacts", label: t("nav.contacts") },
   ];
