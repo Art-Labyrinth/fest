@@ -16,6 +16,7 @@ import GettingThere from "./components/GettingThere";
 import AnalyticsLoader from "./components/GTMLoader";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import Feedback from "./components/Feedback";
+import FeedbackThankYou from "./components/FeedbackThankYou";
 import { captureUTMParams } from "./utils/utm";
 
 import "./index.css";
@@ -51,6 +52,7 @@ const router = createBrowserRouter(
         { path: "about", element: <About /> },
         { path: "contacts", element: <Contacts /> },
         { path: "feedback", element: <Feedback /> },
+        { path: "feedback/thank-you", element: <FeedbackThankYou /> },
         { path: "join", element: <JoinLanding /> },
         { path: "join/volunteer", element: <JoinVolunteerForm /> },
         { path: "join/master", element: <JoinMasterForm /> },

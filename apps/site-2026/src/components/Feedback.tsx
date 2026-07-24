@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { FeedbackState, ViewMode, FeedbackSubmitData } from "./Feedback/types";
 import { PageVariant } from "./Feedback/PageVariant";
 import { WizardVariant } from "./Feedback/WizardVariant";
@@ -15,8 +15,10 @@ export default function Feedback() {
   const { t } = useTranslation();
   const i18n = useTranslation().i18n;
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const viewMode = (searchParams.get("view") as ViewMode) || "wizard";
   const [formOpenTime] = useState(Date.now());
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [state, setState] = useState<FeedbackState>({
     name: "",
@@ -35,34 +37,36 @@ export default function Feedback() {
   const [currentStep, setCurrentStep] = useState(1);
   const [expandedAccordion, setExpandedAccordion] = useState<number | null>(0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const data: FeedbackSubmitData = {
-      q1: state.name.trim().length > 0 ? state.name : null,
-      q2: state.selectedRole === "feedback.roles.other" ? state.otherRole : state.selectedRole,
-      q3: state.q3Answer,
-      q4: state.responses,
-      q5: state.q6Answer,
-      q6: state.q7Answer,
-      q7: state.q8Answer,
-      q8: {
-        contact: state.selectedHelp.size > 0 ? state.contact : null,
-        options: Array.from(state.selectedHelp),
-      },
-      q9: state.q10Answer,
-      timestamp: new Date().toISOString(),
-    };
+    setIsSubmitting(true);
 
-    submitFeedback(data);
-
-    // Collect additional statistics and send to backend
     try {
+      const data: FeedbackSubmitData = {
+        q1: state.name.trim().length > 0 ? state.name : null,
+        q2: state.selectedRole === "feedback.roles.other" ? state.otherRole : state.selectedRole,
+        q3: state.q3Answer,
+        q4: state.responses,
+        q5: state.q6Answer,
+        q6: state.q7Answer,
+        q7: state.q8Answer,
+        q8: {
+          contact: state.selectedHelp.size > 0 ? state.contact : null,
+          options: Array.from(state.selectedHelp),
+        },
+        q9: state.q10Answer,
+        timestamp: new Date().toISOString(),
+      };
+
+      submitFeedback(data);
+
+      // Collect additional statistics and send to backend
       const deviceStats = getDeviceStats();
       const utmParams = getUTMParams();
       const fillTimeMs = Date.now() - formOpenTime;
       const currentLang = i18n.language || "en";
 
-      submitFeedbackToBackend({
+      await submitFeedbackToBackend({
         ...data,
         lang: currentLang,
         timezone: deviceStats.timezone,
@@ -75,9 +79,12 @@ export default function Feedback() {
         networkType: deviceStats.networkType || "unknown",
         fillTimeMs,
       });
+
+      // Redirect to thank you page on success
+      navigate("/feedback/thank-you");
     } catch (err) {
-      console.error("Failed to send feedback to backend:", err);
-      // Fail silently — the feedback was already logged via submitFeedback()
+      console.error("Failed to submit feedback:", err);
+      setIsSubmitting(false);
     }
   };
 
@@ -131,6 +138,7 @@ export default function Feedback() {
               onContactChange={(value) => setState({ ...state, contact: value })}
               onQ10Change={(value) => setState({ ...state, q10Answer: value })}
               onSubmit={handleSubmit}
+              isSubmitting={isSubmitting}
               t={t}
             />
           </>
@@ -161,6 +169,7 @@ export default function Feedback() {
             onContactChange={(value) => setState({ ...state, contact: value })}
             onQ10Change={(value) => setState({ ...state, q10Answer: value })}
             onSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
             t={t}
           />
         )}
@@ -192,6 +201,7 @@ export default function Feedback() {
             onContactChange={(value) => setState({ ...state, contact: value })}
             onQ10Change={(value) => setState({ ...state, q10Answer: value })}
             onSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
             t={t}
           />
         )}

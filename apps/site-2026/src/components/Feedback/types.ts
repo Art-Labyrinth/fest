@@ -33,6 +33,7 @@ export interface VariantProps extends FeedbackState {
   onContactChange: (value: string) => void;
   onQ10Change: (value: string) => void;
   onSubmit: (e: React.FormEvent) => void;
+  isSubmitting?: boolean;
   t: (key: string) => string;
 }
 
