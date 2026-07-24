@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { saveFbclid, META_PIXEL_ID } from '../utils/fbTracking';
 
-const GTM_ID = 'GTM-WGJVLZWW';
+const GTM_ID = 'GTM-T5NJSR9B';
 
 /** GTM does not load on all pages /contribute* */
 function isGtmBlocked(pathname: string): boolean {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -16,11 +16,15 @@ import GettingThere from "./components/GettingThere";
 import AnalyticsLoader from "./components/GTMLoader";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import Feedback from "./components/Feedback";
+import { captureUTMParams } from "./utils/utm";
 
 import "./index.css";
 import "./i18n";
 
 function Layout() {
+  useEffect(() => {
+    captureUTMParams();
+  }, []);
   return (
     <div className="min-h-screen bg-main">
       <AnalyticsLoader />
