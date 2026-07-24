@@ -11,6 +11,10 @@ export const WizardVariant: React.FC<WizardProps> = (props) => {
   const submitButtonRef = React.useRef<HTMLButtonElement>(null);
   const wasSubmitClickedRef = React.useRef(false);
 
+  const handleSubmitClick = () => {
+    wasSubmitClickedRef.current = true;
+  };
+
   const handleInputKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && props.currentStep < 9) {
       e.preventDefault();
@@ -313,6 +317,7 @@ export const WizardVariant: React.FC<WizardProps> = (props) => {
           <button
             ref={submitButtonRef}
             type="submit"
+            onClick={handleSubmitClick}
             disabled={props.isSubmitting}
             className="flex-1 rounded-lg bg-green-600 px-4 py-3 font-semibold text-white transition-all hover:bg-green-700 active:scale-95 disabled:opacity-75 disabled:cursor-not-allowed"
           >
