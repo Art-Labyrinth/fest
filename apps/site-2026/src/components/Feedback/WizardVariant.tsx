@@ -18,7 +18,9 @@ export const WizardVariant: React.FC<WizardProps> = (props) => {
   const handleInputKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && props.currentStep < 9) {
       e.preventDefault();
-      props.onStepChange(props.currentStep + 1);
+      if (isStepValid()) {
+        props.onStepChange(props.currentStep + 1);
+      }
     }
   };
 
@@ -100,10 +102,10 @@ export const WizardVariant: React.FC<WizardProps> = (props) => {
         <div>
           <h2 className="mb-3 text-lg font-semibold text-gray-800">{props.t("feedback.q4_q5_title")}</h2>
           <div className="flex items-center justify-between gap-2 mb-6 flex-wrap">
-            <span className="text-sm font-medium text-green-600">{props.t("feedback.q4_q5_good")}</span>
-            <span className="text-sm font-medium text-red-600">{props.t("feedback.q4_q5_bad")}</span>
+            <span className="text-lg font-medium text-green-600">{props.t("feedback.q4_q5_good")}</span>
+            <span className="text-lg font-medium text-red-600">{props.t("feedback.q4_q5_bad")}</span>
           </div>
-          <div className="space-y-2 max-h-96 overflow-y-auto">
+          <div className="space-y-2">
             {feedbackItems.map((item) => {
               const response = props.responses[item.id];
               return (
@@ -256,7 +258,35 @@ export const WizardVariant: React.FC<WizardProps> = (props) => {
     },
   ];
 
+  // All questions are required except "zones" (step 4) and "q9" (step 8, help offer).
+  const isStepValid = (): boolean => {
+    const id = questions[props.currentStep - 1]?.id;
+    switch (id) {
+      case "name":
+        return props.name.trim().length > 0;
+      case "role":
+        if (props.selectedRole === "feedback.roles.other") {
+          return props.otherRole.trim().length > 0;
+        }
+        return props.selectedRole.length > 0;
+      case "q3":
+        return props.q3Answer.trim().length > 0;
+      case "q6":
+        return props.q6Answer.trim().length > 0;
+      case "q7":
+        return props.q7Answer.trim().length > 0;
+      case "q8":
+        return props.q8Answer.trim().length > 0;
+      case "q10":
+        return props.q10Answer.trim().length > 0;
+      // "zones" and "q9" are optional.
+      default:
+        return true;
+    }
+  };
+
   const handleNext = () => {
+    if (!isStepValid()) return;
     if (props.currentStep < questions.length) {
       props.onStepChange(props.currentStep + 1);
     }
@@ -290,6 +320,8 @@ export const WizardVariant: React.FC<WizardProps> = (props) => {
   };
 
 
+  const stepValid = isStepValid();
+
   return (
     <form onSubmit={handleFinish} onKeyDown={handleFormKeyDown} className="space-y-6">
       <div className="rounded-lg bg-white/80 backdrop-blur-sm p-6 shadow-sm border border-gray-100">
@@ -309,7 +341,8 @@ export const WizardVariant: React.FC<WizardProps> = (props) => {
           <button
             type="button"
             onClick={handleNext}
-            className="flex-1 rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white transition-all hover:bg-blue-700 active:scale-95"
+            disabled={!stepValid}
+            className="flex-1 rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white transition-all hover:bg-blue-700 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600"
           >
             {props.t("feedback.next")}
           </button>
@@ -318,7 +351,7 @@ export const WizardVariant: React.FC<WizardProps> = (props) => {
             ref={submitButtonRef}
             type="submit"
             onClick={handleSubmitClick}
-            disabled={props.isSubmitting}
+            disabled={props.isSubmitting || !stepValid}
             className="flex-1 rounded-lg bg-green-600 px-4 py-3 font-semibold text-white transition-all hover:bg-green-700 active:scale-95 disabled:opacity-75 disabled:cursor-not-allowed"
           >
             {props.isSubmitting ? (
