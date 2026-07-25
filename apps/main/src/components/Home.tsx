@@ -33,10 +33,10 @@ export default function Home() {
           </p>
         </div>
 
-        <section className="max-w-2xl mx-auto mb-16 rounded-3xl border border-brown/20 bg-orange-150/85 backdrop-blur-sm shadow-lg px-6 py-8 sm:px-10 text-center font-roca">
-          {/* <p className="text-xs sm:text-sm font-bold uppercase tracking-wide text-brown/60">
+        {/* <section className="max-w-2xl mx-auto mb-16 rounded-3xl border border-brown/20 bg-orange-150/85 backdrop-blur-sm shadow-lg px-6 py-8 sm:px-10 text-center font-roca">
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-wide text-brown/60">
             {t("home.announcement_tag")}
-          </p> */}
+          </p>
           <p className="mt-3 text-2xl sm:text-4xl font-black uppercase">
             {t("home.announcement_dates")}
           </p>
@@ -92,7 +92,7 @@ export default function Home() {
               {t("home.join_festival")}
             </a>
           </div>
-        </section>
+        </section> */}
 
         <h2 className="text-2xl font-bold mb-8 text-center">{t("home.editions_title")}</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
