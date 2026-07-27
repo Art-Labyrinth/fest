@@ -18,6 +18,8 @@ export interface FeedbackState {
   selectedHelp: Set<string>;
   contact: string;
   q10Answer: string;
+  /** Trap field for bots. A person does not see it, the meaning is always empty. */
+  honeypot: string;
 }
 
 export interface VariantProps extends FeedbackState {
@@ -32,6 +34,7 @@ export interface VariantProps extends FeedbackState {
   onHelpToggle: (option: string) => void;
   onContactChange: (value: string) => void;
   onQ10Change: (value: string) => void;
+  onHoneypotChange: (value: string) => void;
   onSubmit: (e: React.FormEvent) => void;
   isSubmitting?: boolean;
   t: (key: string) => string;

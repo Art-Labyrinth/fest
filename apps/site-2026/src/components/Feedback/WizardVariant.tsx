@@ -1,6 +1,7 @@
 import React from "react";
 import { VariantProps } from "./types";
 import { feedbackItems, roleKeys, helpOptionKeys } from "./constants";
+import { HoneypotField } from "./HoneypotField";
 
 interface WizardProps extends VariantProps {
   currentStep: number;
@@ -324,6 +325,8 @@ export const WizardVariant: React.FC<WizardProps> = (props) => {
 
   return (
     <form onSubmit={handleFinish} onKeyDown={handleFormKeyDown} className="space-y-6">
+      <HoneypotField value={props.honeypot} onChange={props.onHoneypotChange} />
+
       <div className="rounded-lg bg-white/80 backdrop-blur-sm p-6 shadow-sm border border-gray-100">
         {questions[props.currentStep - 1].render()}
       </div>

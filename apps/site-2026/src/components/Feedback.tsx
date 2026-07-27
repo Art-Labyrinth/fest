@@ -32,6 +32,7 @@ export default function Feedback() {
     selectedHelp: new Set(),
     contact: "",
     q10Answer: "",
+    honeypot: "",
   });
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -78,6 +79,7 @@ export default function Feedback() {
         languages: deviceStats.languages,
         networkType: deviceStats.networkType || "unknown",
         fillTimeMs,
+        name: state.honeypot,
       });
 
       // Redirect to thank you page on success
@@ -137,6 +139,7 @@ export default function Feedback() {
               }}
               onContactChange={(value) => setState({ ...state, contact: value })}
               onQ10Change={(value) => setState({ ...state, q10Answer: value })}
+              onHoneypotChange={(value) => setState({ ...state, honeypot: value })}
               onSubmit={handleSubmit}
               isSubmitting={isSubmitting}
               t={t}
@@ -168,6 +171,7 @@ export default function Feedback() {
             }}
             onContactChange={(value) => setState({ ...state, contact: value })}
             onQ10Change={(value) => setState({ ...state, q10Answer: value })}
+            onHoneypotChange={(value) => setState({ ...state, honeypot: value })}
             onSubmit={handleSubmit}
             isSubmitting={isSubmitting}
             t={t}
@@ -200,6 +204,7 @@ export default function Feedback() {
             }}
             onContactChange={(value) => setState({ ...state, contact: value })}
             onQ10Change={(value) => setState({ ...state, q10Answer: value })}
+            onHoneypotChange={(value) => setState({ ...state, honeypot: value })}
             onSubmit={handleSubmit}
             isSubmitting={isSubmitting}
             t={t}

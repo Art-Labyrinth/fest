@@ -1,6 +1,7 @@
 import React from "react";
 import { VariantProps } from "./types";
 import { feedbackItems, roleKeys, helpOptionKeys } from "./constants";
+import { HoneypotField } from "./HoneypotField";
 
 interface AccordionProps extends VariantProps {
   expandedAccordion: number | null;
@@ -219,6 +220,8 @@ export const AccordionVariant: React.FC<AccordionProps> = (props) => {
 
   return (
     <form onSubmit={props.onSubmit} className="space-y-4">
+      <HoneypotField value={props.honeypot} onChange={props.onHoneypotChange} />
+
       <div className="space-y-2">
         {sections.map((section, idx) => (
           <div key={idx} className="rounded-lg overflow-hidden border border-gray-200 bg-white/80 backdrop-blur-sm">
