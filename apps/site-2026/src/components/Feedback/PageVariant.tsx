@@ -1,10 +1,13 @@
 import React from "react";
 import { VariantProps } from "./types";
 import { feedbackItems, roleKeys, helpOptionKeys } from "./constants";
+import { HoneypotField } from "./HoneypotField";
 
 export const PageVariant: React.FC<VariantProps> = (props) => {
   return (
     <form onSubmit={props.onSubmit} className="space-y-6">
+      <HoneypotField value={props.honeypot} onChange={props.onHoneypotChange} />
+
       {/* Q0: Personal Data */}
       <div className="rounded-lg bg-white/80 backdrop-blur-sm p-6 shadow-sm border border-gray-100">
         <div className="mb-4">

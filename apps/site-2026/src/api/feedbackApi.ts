@@ -20,6 +20,12 @@ export interface FeedbackPayload extends FeedbackSubmitData {
   languages: string[];
   networkType?: string;
   fillTimeMs: number; // time spent filling the form
+  /**
+   * Honeypot: a trap field hidden from the user.
+   * A living person always has an empty line; if filled, it means a bot.
+   * The decision on what to do with such a request is made by the backend.
+   */
+  name: string;
 }
 
 export async function submitFeedbackToBackend(payload: FeedbackPayload): Promise<void> {
