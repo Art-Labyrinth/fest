@@ -6,8 +6,7 @@ import { PageVariant } from "./Feedback/PageVariant";
 import { WizardVariant } from "./Feedback/WizardVariant";
 import { AccordionVariant } from "./Feedback/AccordionVariant";
 import { toggleResponse } from "./Feedback/utils";
-import { submitFeedback } from "./Feedback/api";
-import { submitFeedbackToBackend } from "../api/feedbackApi";
+import { submitFeedbackToBackend } from "./Feedback/api";
 import { getDeviceStats } from "../utils/deviceStats";
 import { getUTMParams } from "../utils/utm";
 
@@ -59,8 +58,6 @@ export default function Feedback() {
         timestamp: new Date().toISOString(),
       };
 
-      submitFeedback(data);
-
       // Collect additional statistics and send to backend
       const deviceStats = getDeviceStats();
       const utmParams = getUTMParams();
@@ -80,6 +77,7 @@ export default function Feedback() {
         networkType: deviceStats.networkType || "unknown",
         fillTimeMs,
         name: state.honeypot,
+        form_version: "v2026",
       });
 
       // Redirect to thank you page on success

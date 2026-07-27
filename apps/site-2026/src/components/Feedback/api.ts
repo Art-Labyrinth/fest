@@ -1,16 +1,39 @@
-import { FeedbackSubmitData } from "./types";
+import { API_URL } from '../../config';
+import { FeedbackSubmitData } from '../../components/Feedback/types';
+import { UTMParams } from '../../utils/utm';
 
-export const submitFeedback = async (data: FeedbackSubmitData): Promise<void> => {
-  console.log("🎯 Feedback submitted:", {
-    ...data,
-    q4: Object.fromEntries(Object.entries(data.q4).filter(([_, v]) => v !== null)),
-    timestamp: new Date(data.timestamp).toLocaleString("ru-RU"),
+export interface FeedbackPayload extends FeedbackSubmitData {
+  // Additional statistics
+  lang: string;
+  timezone: string;
+  utm: UTMParams;
+  deviceType: 'mobile' | 'tablet' | 'desktop';
+  screen: {
+    width: number;
+    height: number;
+  };
+  viewport: {
+    width: number;
+    height: number;
+  };
+  devicePixelRatio: number;
+  languages: string[];
+  networkType?: string;
+  fillTimeMs: number; // time spent filling the form
+  /**
+   * Honeypot: a trap field hidden from the user.
+   * A living person always has an empty line; if filled, it means a bot.
+   * The decision on what to do with such a request is made by the backend.
+   */
+  name: string;
+  form_version: string;
+}
+
+export async function submitFeedbackToBackend(payload: FeedbackPayload): Promise<void> {
+  const res = await fetch(`${API_URL}/feedback/survey`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
   });
-
-  // TODO: Отправить на бэкенд
-  // const response = await fetch("/api/feedback", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(data),
-  // });
-};
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+}
